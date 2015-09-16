@@ -38,11 +38,13 @@ However, a model is nothing more than a Ruby class. In other words, we can code 
 
 In this lab, we'll be writing a model that is responsible for sending requests to and handling the data that comes back from an API. 
 
-## Project Structure
+## Overview
 
 Before we start coding, let's get a handle on the structure of this project, and the ways in which our API wrapper will interact with our controller and views. 
 
 In this lab, we're building a very important app that translates users' moods in giphs. We'll be using the Giphy API to retrieve and deliver giphs that match the mood a user inputs via form. 
+
+### Project Structure
 
 Our app is set up in the following way: 
 
@@ -60,6 +62,8 @@ Our app is set up in the following way:
 - spec 
 etc...
 ```
+
+### Desired Behavior
 
 The flow of our app will work something like this:
 
@@ -91,7 +95,26 @@ class ApplicationController < Sinatra::Base
   end
 end
 ```
-Note that our routes are already defined for us. We have the root path which renders the `home.html.erb` view and we have the `post '/moods'` route that will recieve the `POST` request sent when the user fills our the form on the home page, get the giphs using our `Giph` class, and redner the `app/views/giphs/index.html.erb` view page. 
+Note that our routes are already defined for us. We have the root path which renders the `home.html.erb` view and we have the `post '/moods'` route that will recieve the `POST` request sent when the user fills our the form on the home page, get the giphs using our `Giph` class, and render the `app/views/giphs/index.html.erb` view page. 
+
+### Our Job
+
+We will need to:
+
+* Write the `Giph` model to wrap the Giphy API.
+* Add the form for the user's mood input to the homepage.
+* Write the content of the `post '/moods'` route to use the `Giphy` class to retrieve the appropriate giphs based on the user's input. 
+* Render the giphs created in the above step on the `app/views/giphs/index.html.erb` page. 
+
+## Instructions
+
+### Part I: The Model
+
+Before we worry about any other part of our app, we need our model working. The `Giph` model, our API wrapper, contains the core functionality of our application––the request, reception and manipulation of giphs from the Giphy API. 
+
+Run the tests in `spec/01_models/giph_spec.rb` to get started. 
+
+
 
 
 
