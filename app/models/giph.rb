@@ -12,7 +12,6 @@ class Giph
   end
 
   def self.search_and_retreive_giphs(keyword)
-    keyword = keyword
     url = "http://api.giphy.com/v1/gifs/search?q=#{keyword}&api_key=dc6zaTOxFJmzC"
     response = self.get_api_response(url)
     self.make_giphs(response)
@@ -25,9 +24,12 @@ class Giph
   end
 
   def self.make_giphs(response)
-    response["data"].collect do |gif|
+    urls = response["data"].collect do |gif|
       image_url = gif["images"]["fixed_height"]["url"]
-      Giph.new(image_url)
+    end
+
+    urls.collect do |url|
+      Giph.new(url)
     end
   end
 end

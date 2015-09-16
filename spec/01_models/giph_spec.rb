@@ -1,11 +1,25 @@
 require 'spec_helper'
 
 describe 'Giph' do
+  
+  context 'instance methods' do
+    it 'initializes with an argument of an image url' do 
+      expect{Giph.new("http://media0.giphy.com/media/voF1Droc9eISs/200.gif")}.to_not raise_error
+    end
+    
+    it 'has an attr_accessor for image_url' do
+      giph = Giph.new("http://media0.giphy.com/media/voF1Droc9eISs/200.gif")
+      expect(giph.image_url).to eq("http://media0.giphy.com/media/voF1Droc9eISs/200.gif") 
+    end
+
+  end
+  
   context 'class methods' do
     describe '.get_api_response' do 
       it 'sends a request to the Giphy API and returns a collection of giphy data' do 
         VCR.use_cassette('moods/angry') do
           query = "http://api.giphy.com/v1/gifs/search?q=angry&api_key=dc6zaTOxFJmzC"
+          # puts Giph.get_api_response(query)
           expect(Giph.get_api_response(query)).to be_a(Hash)
         end
       end
@@ -34,11 +48,4 @@ describe 'Giph' do
       end
     end
   end 
-  
-  context 'instance methods' do
-    it 'has an attr_accessor for image_url' do
-      giph = Giph.new("http://media0.giphy.com/media/voF1Droc9eISs/200.gif")
-      expect(giph.image_url).to eq("http://media0.giphy.com/media/voF1Droc9eISs/200.gif") 
-    end
-  end
 end
