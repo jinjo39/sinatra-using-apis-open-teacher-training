@@ -359,3 +359,5 @@ You'll have to use ERB to repalce the `src` attribute's value with the image url
 ### A Note on Workflow
 
 Now that we're developing apps for the web, we are building the ability to interact with the programs we right, directly in the browser. Don't just rely on the test suite to tell you what to do as you build out these applications. Actually fire up your app with `shotgun` in the terminal and interact with it as you build. This is especially helfpul if you get stuck on passing certain tests. It helps to reveal what is going wrong with your code. 
+
+<a href='https://learn.co/lessons/sinatra-using-apis' data-visibility='hidden'>View this lesson on Learn.co</a>
